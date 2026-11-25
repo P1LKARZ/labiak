@@ -1,0 +1,61 @@
+#include <cstdio.h>
+#include <cstdlib.h>
+#include <ctime.h>
+
+void bubble(int tablica[]);
+void losowe(int tablica[]);
+
+int main()
+{
+    int licznik = 0;
+
+    int tablica[10];
+
+    /*for(int i = 0; i < 10; i++)
+    {
+        if(tablica[i] % 2 == 0)
+        {
+            licznik++;
+        }
+    }
+
+    printf("%d parzystych liczb\n", licznik);*/
+
+    losowe(tablica);
+    bubble(tablica);
+
+    int mediana = (tablica[4] + tablica[5]) / 2;
+    printf("mediana to: %d", mediana);
+
+    return 0;
+}
+
+void bubble(int tablica[])
+{
+    for (int j = 0; j < 10; j++)
+    {
+        for (int i = 0; i < 9; i++)
+        {
+            if (tablica[i] > tablica[i + 1])
+            {
+                int temp = tablica[i + 1];
+                tablica[i + 1] = tablica[i];
+                tablica[i] = temp;
+            }
+        }
+    }
+
+    for (int i = 0; i < 10; i++)
+    {
+        printf("%d element to: %d\n", i + 1, tablica[i]);
+    }
+}
+
+void losowe(int tablica[])
+{
+    srand(time(NULL));
+    for (int i = 0; i < 10; i++)
+    {
+        tablica[i] = rand() % 100 + 1;
+    }
+}
